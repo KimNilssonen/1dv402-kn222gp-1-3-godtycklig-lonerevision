@@ -10,82 +10,105 @@ namespace Lonerevision
     {
         static void Main(string[] args)
         {
+            // 1. Make a loop to enter salaries, using the method, ReadInt.
             while(true)
             { 
                 int read;
            
-                    read = ReadInt("Ange antal löner att mata in: ");
+                    read = ReadInt("Enter the amount of salaries: ");
 
                 if (read >= 2)
                 {
                     ProcessSalaries(read);
-                    break;
+                    
                 }
 
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nDu måste mata in minst två löner för att göra en beräkning!\n");
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("Tryck valfri tangent för ny beräkning - Esc avslutar.\n");
+                        Console.WriteLine("\nYou have to enter atleast two salaries to make a calculation!\n");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Press any key to do a new calculation - Esc to exit.\n");
                         Console.ResetColor();
-
-                        if(Console.ReadKey(true).Key != ConsoleKey.Escape)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            return;
-                        }
                     }
+
+                if (Console.ReadKey(true).Key != ConsoleKey.Escape)
+                {
+                    continue;
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 
-        // 2. Uträkning och presentation av löner.
+        // 2. Calculation and presentation of salaries.
         static void ProcessSalaries(int count)
         {
 
-            // Skapa arrays.
+            // Create arrays.
             int[] salaries = new int[count];
             int[] unsortSalaries = new int[count];
 
             for (int i = 0; i < count; i++)
             {
-                salaries[i] = ReadInt("Ange lön nummer " + (i + 1) + ": ");
+                salaries[i] = ReadInt("Enter salary number " + (i + 1) + ": ");
             }
 
+            // Calculates and presents salaries.
+            unsortSalaries = (int[])salaries.Clone();
 
+            // Median
             Array.Sort(salaries);
-            int median = salaries.Length / 2;
+            int firstMedian = salaries.Length / 2;
+            int secondMedian = firstMedian - 1;
+            int median = salaries[firstMedian + secondMedian / 2];
+
             int salAverage = (int)salaries.Average();
             int salDifference = salaries.Max() - salaries.Min();
-            
-            Console.WriteLine("\n-------------------------");
-            Console.WriteLine("Medianlön    : {0, 5:c0}", median);
-            Console.WriteLine("Medellön     : {0, 5:c0}", salAverage);
-            Console.WriteLine("Lönespridning: {0, 5:c0}", salDifference);
-            Console.WriteLine("-------------------------\n");
 
+            Console.WriteLine("\n----------------------------");
+            Console.WriteLine("Median salary  : {0, 10:c0}", median);
+            Console.WriteLine("Average salary : {0, 10:c0}", salAverage);
+            Console.WriteLine("Salary spread  : {0, 10:c0}", salDifference);
+            Console.WriteLine("----------------------------\n");
+
+
+            // Presents the salaries entered, in the order you entered them.
+            for (int i = 0; i < count; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    Console.WriteLine();
+                }
+                Console.Write("{0,10} ", unsortSalaries[i]);
+            }
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Press any key to do a new calculation - Esc to exit.\n");
+            Console.ResetColor();
         }
 
-        // 3. Inmatning från tangentbord.
+        // 3. Reads the keyboard.
         static int ReadInt(string prompt)
         {
             while (true)
             {
+                Console.Write(prompt);
+                string input;
+                input = Console.ReadLine();
                 try
                 {
-                    int input;
-                    Console.Write(prompt);
-                    input = int.Parse(Console.ReadLine());
-                    return input;
+                    int number = int.Parse(input);
+                    return number;
                 }
                    
                 catch (FormatException)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Kan inte tolka '{0}' som ett heltal.", "dummy");
+                    Console.WriteLine("Error! Can not translate '{0}' as a integer.", input);
                     Console.ResetColor();
                 }
                 
