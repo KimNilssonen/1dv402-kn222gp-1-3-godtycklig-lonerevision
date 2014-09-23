@@ -36,21 +36,40 @@ namespace Lonerevision
                         }
                         else
                         {
-                            Environment.Exit(0);
+                            return;
                         }
                     }
             }
         }
 
+        // 2. Uträkning och presentation av löner.
         static void ProcessSalaries(int count)
         {
-            int sal1 = ReadInt("Ange lön 1: ");
-            int sal2 = ReadInt("Ange lön 2: ");
-            int sal3 = ReadInt("Ange lön 3: ");
-            int[] salary = {sal1, sal2, sal3};
+
+            // Skapa arrays.
+            int[] salaries = new int[count];
+            int[] unsortSalaries = new int[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                salaries[i] = ReadInt("Ange lön nummer " + (i + 1) + ": ");
+            }
+
+
+            Array.Sort(salaries);
+            int median = salaries.Length / 2;
+            int salAverage = (int)salaries.Average();
+            int salDifference = salaries.Max() - salaries.Min();
             
+            Console.WriteLine("\n-------------------------");
+            Console.WriteLine("Medianlön    : {0, 5:c0}", median);
+            Console.WriteLine("Medellön     : {0, 5:c0}", salAverage);
+            Console.WriteLine("Lönespridning: {0, 5:c0}", salDifference);
+            Console.WriteLine("-------------------------\n");
+
         }
 
+        // 3. Inmatning från tangentbord.
         static int ReadInt(string prompt)
         {
             while (true)

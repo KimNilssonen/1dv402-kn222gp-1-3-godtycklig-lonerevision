@@ -4,3 +4,9 @@ P:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\bin\Debug\Lo
 P:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\obj\Debug\Lonerevision.csprojResolveAssemblyReference.cache
 P:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\obj\Debug\Lonerevision.exe
 P:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\obj\Debug\Lonerevision.pdb
+D:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\bin\Debug\Lonerevision.exe.config
+D:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\bin\Debug\Lonerevision.exe
+D:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\bin\Debug\Lonerevision.pdb
+D:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\obj\Debug\Lonerevision.csprojResolveAssemblyReference.cache
+D:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\obj\Debug\Lonerevision.exe
+D:\Projects\1dv402-kn222gp-1-3-godtycklig-lonerevision\Lonerevision\obj\Debug\Lonerevision.pdb
