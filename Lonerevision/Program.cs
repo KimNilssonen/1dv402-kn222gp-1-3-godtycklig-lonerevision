@@ -23,6 +23,7 @@ namespace Lonerevision
                     
                 }
 
+                    // If you write less than two, this message will appear.
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -51,6 +52,7 @@ namespace Lonerevision
             int[] salaries = new int[count];
             int[] unsortSalaries = new int[count];
 
+            // Counting the arrays.
             for (int i = 0; i < count; i++)
             {
                 salaries[i] = ReadInt("Enter salary number " + (i + 1) + ": ");
@@ -68,11 +70,11 @@ namespace Lonerevision
             int salAverage = (int)salaries.Average();
             int salDifference = salaries.Max() - salaries.Min();
 
-            Console.WriteLine("\n----------------------------");
+            Console.WriteLine("\n----------------------------------");
             Console.WriteLine("Median salary  : {0, 10:c0}", median);
             Console.WriteLine("Average salary : {0, 10:c0}", salAverage);
             Console.WriteLine("Salary spread  : {0, 10:c0}", salDifference);
-            Console.WriteLine("----------------------------\n");
+            Console.WriteLine("----------------------------------\n");
 
 
             // Presents the salaries entered, in the order you entered them.
