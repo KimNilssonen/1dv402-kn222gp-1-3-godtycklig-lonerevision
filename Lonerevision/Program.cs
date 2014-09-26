@@ -12,26 +12,22 @@ namespace Lonerevision
         {
             // 1. Make a loop to enter salaries, using the method, ReadInt.
             while(true)
-            { 
+            {
+                
                 int read;
            
                     read = ReadInt("Enter the amount of salaries: ");
+
 
                 if (read >= 2)
                 {
                     ProcessSalaries(read);
                     
                 }
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nPress any key to do a new calculation - Esc to exit.\n");
+                Console.ResetColor();
 
-                    // If you write less than two, this message will appear.
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nYou have to enter atleast two salaries to make a calculation!\n");
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Press any key to do a new calculation - Esc to exit.\n");
-                        Console.ResetColor();
-                    }
 
                 if (Console.ReadKey(true).Key != ConsoleKey.Escape)
                 {
@@ -63,9 +59,19 @@ namespace Lonerevision
 
             // Median
             Array.Sort(salaries);
-            int firstMedian = salaries.Length / 2;
-            int secondMedian = firstMedian - 1;
-            int median = salaries[firstMedian + secondMedian / 2];
+            int median;
+
+            if(salaries.Length % 2 == 0)
+            {
+                int firstMedian = salaries.Length / 2;
+                int secondMedian = firstMedian - 1;
+                median = (salaries[firstMedian] + salaries[secondMedian]) / 2;
+            }
+
+            else
+            {
+                median = salaries[salaries.Length/2];
+            }
 
             int salAverage = (int)salaries.Average();
             int salDifference = salaries.Max() - salaries.Min();
@@ -85,12 +91,7 @@ namespace Lonerevision
                     Console.WriteLine();
                 }
                 Console.Write("{0,10} ", unsortSalaries[i]);
-            }
-
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Press any key to do a new calculation - Esc to exit.\n");
-            Console.ResetColor();
+            } 
         }
 
         // 3. Reads the keyboard.
@@ -98,19 +99,29 @@ namespace Lonerevision
         {
             while (true)
             {
+                // Makes a string which gets the value from the keyboard. I'm using this later in the "WriteLine".
                 Console.Write(prompt);
                 string input;
                 input = Console.ReadLine();
                 try
                 {
+                    // Making an int that gets the value of input and then returns that int.
                     int number = int.Parse(input);
+                    if (number < 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nYou have to enter atleast two salaries to make a calculation!\n");
+                        Console.ResetColor();
+                    }
+                    
+
                     return number;
                 }
                    
                 catch (FormatException)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Error! Can not translate '{0}' as a integer.", input);
+                    Console.WriteLine("Error! Can not translate '{0}' as a integer.\n", input);
                     Console.ResetColor();
                 }
                 
